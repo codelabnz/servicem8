@@ -1,4 +1,4 @@
-﻿version: '1.0.{build}'
+version: '1.0.{build}'
 configuration:
 - Debug
 - Release
@@ -9,7 +9,7 @@ environment:
 init:
 - ps: $Env:LABEL = "CI" + $Env:APPVEYOR_BUILD_NUMBER.PadLeft(5, "0")
 before_build:
-- appveyor-retry dotnet restore -v Minimal
+- appveyor-retry dotnet restore "src\Servicem8.API\Servicem8.API.csproject" -v Minimal
 build_script:
 - dotnet build "src\Servicem8.API\Servicem8.API.csproject" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
 artifacts:
