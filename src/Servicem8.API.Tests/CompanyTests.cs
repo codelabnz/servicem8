@@ -37,7 +37,7 @@ namespace Servicem8.API.Tests
                 uuid = newId
             };
 
-            var result = servicem8Client.Companies.Save(company);
+            var result = servicem8Client.Companies.Create(company);
             result.Wait();
 
             Assert.IsNull(result.Exception);

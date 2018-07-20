@@ -47,16 +47,30 @@ namespace Servicem8.API.Services
             return ExecuteRequest<List<T>>(request).ContinueWith<T>(x => x.Result.FirstOrDefault());
         }
 
-        public Task ExecutePayload<T>(string resource, T model) where T : class, IKey, new()
+        public Task ExecuteDelete(string resource, Guid id)
+        {
+            if (id == Guid.Empty)
+                throw new ArgumentNullException("model");
+
+            var serializer = new RestSharp.Serializers.JsonSerializer();
+            var request = new RestRequest(resource, Method.DELETE);
+            request.AddUrlSegment("id", id.ToString());
+
+            return ExecuteRequest(request);
+        }
+
+        public Task ExecutePayload<T>(string resource, T model, Guid? id = null) where T : class, IKey, new()
         {
             if (model == null)
                 throw new ArgumentNullException("model");
 
-            if (model.uuid == Guid.Empty)
-                model.uuid = Guid.NewGuid();
-
             var serializer = new RestSharp.Serializers.JsonSerializer();
             var request = new RestRequest(resource, Method.POST);
+
+            if (id.HasValue)
+            {
+                request.AddUrlSegment("id", id.ToString());
+            }
 
             request.AddParameter("application/json", serializer.Serialize(model), ParameterType.RequestBody);
            
