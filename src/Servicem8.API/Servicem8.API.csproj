@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <PackageVersion>0.1</PackageVersion>
+    <Authors>Tim Brown</Authors>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <Owners>TimBrown</Owners>
+    <Title>Servicem8 C# Library</Title>
+    <Description>Servicem8 C# Library</Description>
   </PropertyGroup>
 
   <ItemGroup>
