@@ -11,7 +11,7 @@ init:
 before_build:
 - appveyor-retry dotnet restore -v Minimal
 build_script:
-- dotnet build "src\Servicem8.sln" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
+- dotnet build "src\Servicem8.API\Servicem8.API.csproject" -c %CONFIGURATION% --no-dependencies --version-suffix %LABEL%
 artifacts:
 - path: artifacts\**\*.*
 cache:
