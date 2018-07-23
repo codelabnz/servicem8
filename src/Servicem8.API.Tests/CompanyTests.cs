@@ -55,6 +55,40 @@ namespace Servicem8.API.Tests
 
             Assert.IsNotNull(company);
         }
+
+        [TestMethod]
+        public async Task CanUpdateCompany()
+        {
+            var servicem8Client = new Servicem8Client(_apiUsername,
+                                                   _apiPassword);
+
+            var newId = Guid.NewGuid();
+
+            var company = new Company()
+            {
+                active = 1,
+                name = string.Format("name{0}", newId.ToString()),
+                address = "test street",
+                uuid = newId
+            };
+
+            var result = servicem8Client.Companies.Create(company);
+            result.Wait();
+
+            //Update the address of the company
+            company.address = "updated street address";
+
+            result = servicem8Client.Companies.Update(company);
+            result.Wait();
+
+            Assert.IsNull(result.Exception);
+
+            //Fetch company from API to verify
+            company = await servicem8Client.Companies.ById(company.uuid);
+
+            Assert.AreEqual<string>(company.address, "updated street address");
+
+        }
     }
 
 

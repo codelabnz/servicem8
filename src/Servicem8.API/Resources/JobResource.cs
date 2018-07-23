@@ -11,6 +11,7 @@ namespace Servicem8.API.Resources
         public JobResource(IClientExecutionService client) : base(client) { }
 
         private const string ListUrl = "/job.json";
+        private const string QuoteUrl = "/job.json?$filter=status%20eq%20'Quote'";
         private const string ByIdUrl = "/job.json?$filter=uuid%20eq%20'{id}'";
         private const string CreateUrl = "/job.json";
         private const string UpdateUrl = "/job/{id}.json";
@@ -19,6 +20,11 @@ namespace Servicem8.API.Resources
         public Task<List<Job>> List()
         {
             return Client.ExecuteList<Job>(ListUrl);
+        }
+
+        public Task<List<Job>> Quotes()
+        {
+            return Client.ExecuteList<Job>(QuoteUrl);
         }
 
         public Task<Job> ById(Guid id)

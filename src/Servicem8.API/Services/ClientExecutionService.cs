@@ -1,12 +1,12 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
-using RestSharp;
 using RestSharp.Authenticators;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using Servicem8.API.Models;
 using Servicem8.API.Exceptions;
+using RestSharp;
 
 namespace Servicem8.API.Services
 {
@@ -30,7 +30,7 @@ namespace Servicem8.API.Services
 
         public Task<List<T>> ExecuteList<T>(string resource, object parameters = null)
         {
-            var request = new RestRequest(resource, Method.GET);
+            var request = new Servicem8.API.Serializers.RestRequest(resource, Method.GET);
             request.AddParameters(parameters);
             request.RequestFormat = DataFormat.Json;
 
@@ -39,7 +39,7 @@ namespace Servicem8.API.Services
 
         public Task<T> ExecuteSingle<T>(string resource, Guid id) where T : new()
         {
-            var request = new RestRequest(resource, Method.GET);
+            var request = new Servicem8.API.Serializers.RestRequest(resource, Method.GET);
             request.AddUrlSegment("id", id.ToString());
             request.RequestFormat = DataFormat.Json;
 
@@ -52,8 +52,7 @@ namespace Servicem8.API.Services
             if (id == Guid.Empty)
                 throw new ArgumentNullException("model");
 
-            var serializer = new RestSharp.Serializers.JsonSerializer();
-            var request = new RestRequest(resource, Method.DELETE);
+            var request = new Servicem8.API.Serializers.RestRequest(resource, Method.DELETE);
             request.AddUrlSegment("id", id.ToString());
 
             return ExecuteRequest(request);
@@ -64,15 +63,17 @@ namespace Servicem8.API.Services
             if (model == null)
                 throw new ArgumentNullException("model");
 
-            var serializer = new RestSharp.Serializers.JsonSerializer();
-            var request = new RestRequest(resource, Method.POST);
+
+            var request = new Servicem8.API.Serializers.RestRequest(resource, Method.POST);
 
             if (id.HasValue)
             {
                 request.AddUrlSegment("id", id.ToString());
             }
 
-            request.AddParameter("application/json", serializer.Serialize(model), ParameterType.RequestBody);
+            var requestBody = request.JsonSerializer.Serialize(model);
+
+            request.AddParameter("application/json", requestBody, ParameterType.RequestBody);
            
             return ExecuteRequest(request);
         }

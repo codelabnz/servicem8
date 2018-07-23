@@ -21,7 +21,23 @@ namespace Servicem8.API.Tests
         }
 
         [TestMethod]
-        public void CanCreateJob()
+        public async Task CanFetchQuotes()
+        {
+
+            var servicem8Client = new Servicem8Client(_apiUsername,
+                                                     _apiPassword);
+
+            var quotes = await servicem8Client.Jobs.Quotes();
+
+            Assert.IsTrue(quotes.Count > 0);
+            foreach (var quote in quotes) 
+            {
+                Assert.IsTrue(quote.status == "Quote");
+            }
+        }
+
+        [TestMethod]
+        public void CanCreateNewQuote()
         {
 
             var servicem8Client = new Servicem8Client(_apiUsername,
