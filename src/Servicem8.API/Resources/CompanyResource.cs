@@ -13,8 +13,6 @@ namespace Servicem8.API.Resources
         private const string ListUrl = "/company.json";
         private const string ByIdUrl = "/company.json?$filter=uuid%20eq%20'{id}'";
         private const string CreateUrl = "/company.json";
-        private const string UpdateUrl = "/company/{id}.json";
-        private const string DeleteByIdUrl = "/company/{id}.json";
 
         public Task<List<Company>> List()
         {
@@ -26,19 +24,9 @@ namespace Servicem8.API.Resources
             return Client.ExecuteSingle<Company>(ByIdUrl, id);
         }
 
-        public Task Create(Company model)
+        public Task Save(Company model)
         {
             return Client.ExecutePayload(CreateUrl, model);
-        }
-
-        public Task Update(Company model)
-        {
-            return Client.ExecutePayload(UpdateUrl, model, model.uuid);
-        }
-
-        public Task Delete(Company model)
-        {
-            return Client.ExecuteDelete(DeleteByIdUrl, model.uuid);
         }
     }
 }

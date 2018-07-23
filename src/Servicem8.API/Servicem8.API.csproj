@@ -2,13 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <PackOnBuild>true</PackOnBuild>
-    <PackageVersion>0.1</PackageVersion>
-    <Authors>Tim Brown</Authors>
-    <DevelopmentDependency>true</DevelopmentDependency>
-    <Owners>TimBrown</Owners>
-    <Title>Servicem8 C# Library</Title>
-    <Description>Servicem8 C# Library</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,10 +12,8 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Models\" />
     <Folder Include="Resources\" />
-    <Folder Include="Serializers\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="RestSharp" Version="106.3.1" />
   </ItemGroup>
 </Project>
