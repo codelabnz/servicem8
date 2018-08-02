@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageVersion>1.0.2.0</PackageVersion>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <PackageVersion>1.0.0.1</PackageVersion>
     <Authors>Tim Brown</Authors>
     <DevelopmentDependency>true</DevelopmentDependency>
     <Owners>Tim Brown</Owners>
@@ -10,10 +10,6 @@
     <Description>Servicem8 C# Library</Description>
     <ReleaseVersion>1.0.1.0</ReleaseVersion>
     <Summary>Servicem8 C# Library</Summary>
-<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-  <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-  <ReleaseVersion>1.0.2.0</ReleaseVersion>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -23,7 +19,7 @@
     <Folder Include="Serializers\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="RestSharp" Version="106.3.1" />
   </ItemGroup>
   <ItemGroup>
