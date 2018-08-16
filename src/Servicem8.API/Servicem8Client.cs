@@ -14,6 +14,7 @@ namespace Servicem8.API
         private readonly Lazy<CompanyResource> _companies;
         private readonly Lazy<JobResource> _jobs;
         private readonly Lazy<MaterialResource> _materials;
+        private readonly Lazy<JobMaterialResource> _jobMaterials;
        
 
         public Servicem8Client(string apiUsername, string apiPassword, string url = null)
@@ -26,7 +27,7 @@ namespace Servicem8.API
             _companies = new Lazy<CompanyResource>(() => new CompanyResource(_executionService), true);
             _jobs = new Lazy<JobResource>(() => new JobResource(_executionService), true);
             _materials = new Lazy<MaterialResource>(() => new MaterialResource(_executionService), true);
-          
+            _jobMaterials = new Lazy<JobMaterialResource>(() => new JobMaterialResource(_executionService), true);
         }
 
         public CompanyResource Companies
@@ -39,9 +40,14 @@ namespace Servicem8.API
             get { return _jobs.Value; }
         }
 
-        public MaterialResource MaterialResource
+        public MaterialResource Materials
         {
             get { return _materials.Value; }
+        }
+
+        public JobMaterialResource JobMaterials
+        {
+            get { return _jobMaterials.Value; }
         }
 
 

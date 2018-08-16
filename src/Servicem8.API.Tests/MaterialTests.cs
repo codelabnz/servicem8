@@ -15,7 +15,7 @@ namespace Servicem8.API.Tests
             var servicem8Client = new Servicem8Client(_apiUsername,
                                                      _apiPassword);
 
-            var materials = await servicem8Client.MaterialResource.List();
+            var materials = await servicem8Client.Materials.List();
 
             Assert.IsTrue(materials.Count > 0);
         }
@@ -44,12 +44,12 @@ namespace Servicem8.API.Tests
                 quantity_in_stock = 100               
             };
 
-            var result = servicem8Client.MaterialResource.Create(newMaterial);
+            var result = servicem8Client.Materials.Create(newMaterial);
             result.Wait();
 
             Assert.IsNull(result.Exception);
 
-            var verifyMaterial = await servicem8Client.MaterialResource.ById(newMaterialId);
+            var verifyMaterial = await servicem8Client.Materials.ById(newMaterialId);
 
             Assert.AreEqual<Guid>(newMaterialId, verifyMaterial.uuid);
             Assert.AreEqual<string>(newMaterial.barcode, verifyMaterial.barcode);
