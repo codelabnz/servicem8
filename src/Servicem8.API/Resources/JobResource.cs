@@ -11,8 +11,8 @@ namespace Servicem8.API.Resources
         public JobResource(IClientExecutionService client) : base(client) { }
 
         private const string ListUrl = "/job.json";
-        private const string QuoteUrl = "/job.json?$filter=status%20eq%20'Quote'";
-        private const string ByIdUrl = "/job.json?$filter=uuid%20eq%20'{id}'";
+        private const string QuoteUrl = "/job.json?%24filter=status%20eq%20'Quote'";
+        private const string ByIdUrl = "/job.json?%24filter=uuid%20eq%20'{id}'";
         private const string CreateUrl = "/job.json";
         private const string UpdateUrl = "/job/{id}.json";
         private const string DeleteByIdUrl = "/job/{id}.json";

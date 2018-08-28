@@ -11,7 +11,7 @@ namespace Servicem8.API.Resources
         public MaterialResource(IClientExecutionService client) : base(client) { }
 
         private const string ListUrl = "/material.json";
-        private const string ByIdUrl = "/material.json?$filter=uuid%20eq%20'{id}'";
+        private const string ByIdUrl = "/material.json?%24filter=uuid%20eq%20'{id}'";
         private const string CreateUrl = "/material.json";
         private const string UpdateUrl = "/material/{id}.json";
         private const string DeleteByIdUrl = "/material/{id}.json";

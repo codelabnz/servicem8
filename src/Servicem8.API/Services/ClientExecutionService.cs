@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Servicem8.API.Models;
 using Servicem8.API.Exceptions;
 using RestSharp;
+using RestSharp.Extensions;
 
 namespace Servicem8.API.Services
 {
@@ -45,6 +46,15 @@ namespace Servicem8.API.Services
 
             //Because the way ServiceM8 does it filtering, need to get the first one from the array in the response.
             return ExecuteRequest<List<T>>(request).ContinueWith<T>(x => x.Result.FirstOrDefault());
+        }
+
+        public byte[] ExecuteDownload(string resource, Guid id)
+        {
+            var request = new Servicem8.API.Serializers.RestRequest(resource, Method.GET);
+            request.AddUrlSegment("id", id.ToString());
+            request.RequestFormat = DataFormat.Json;
+
+            return ExecuteFileRequest(request);
         }
 
         public Task ExecuteDelete(string resource, Guid id)
@@ -123,6 +133,17 @@ namespace Servicem8.API.Services
             });
 
             return taskCompletionSource.Task;
+        }
+
+        private byte[] ExecuteFileRequest(IRestRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException("request");
+
+            var taskCompletionSource = new TaskCompletionSource<byte[]>();
+
+            return _client.DownloadData(request);
+           
         }
 
         private Task<T> ExecuteRequest<T>(IRestRequest request) where T : new()

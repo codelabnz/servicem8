@@ -11,7 +11,7 @@ namespace Servicem8.API.Resources
         public CompanyResource(IClientExecutionService client) : base(client) { }
 
         private const string ListUrl = "/company.json";
-        private const string ByIdUrl = "/company.json?$filter=uuid%20eq%20'{id}'";
+        private const string ByIdUrl = "/company.json?%24filter=uuid%20eq%20'{id}'";
         private const string CreateUrl = "/company.json";
         private const string UpdateUrl = "/company/{id}.json";
         private const string DeleteByIdUrl = "/company/{id}.json";

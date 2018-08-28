@@ -11,8 +11,8 @@ namespace Servicem8.API.Resources
         public JobMaterialResource(IClientExecutionService client) : base(client) { }
 
         private const string ListUrl = "/jobmaterial.json";
-        private const string JobUrl = "/jobmaterial.json?$filter=job_uuid%20eq%20'{0}'";
-        private const string ByIdUrl = "/jobmaterial.json?$filter=uuid%20eq%20'{id}'";
+        private const string JobUrl = "/jobmaterial.json?%24filter=job_uuid%20eq%20'{0}'";
+        private const string ByIdUrl = "/jobmaterial.json?%24filter=uuid%20eq%20'{id}'";
         private const string CreateUrl = "/jobmaterial.json";
         private const string UpdateUrl = "/jobmaterial/{id}.json";
         private const string DeleteByIdUrl = "/jobmaterial/{id}.json";

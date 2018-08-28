@@ -13,7 +13,7 @@
 <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-  <ReleaseVersion>1.0.2.0</ReleaseVersion>
+  <ReleaseVersion>1.0.4.0</ReleaseVersion>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -28,5 +28,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Servicem8.API.1.0.0.nupkg" />
+    <None Remove="Servicem8.API.1.0.4.nupkg" />
   </ItemGroup>
 </Project>

@@ -11,5 +11,6 @@ namespace Servicem8.API.Services
         Task<T> ExecuteSingle<T>(string resource, Guid id) where T : new();
         Task ExecutePayload<T>(string resource, T model, Guid? id = null) where T : class, IKey, new();
         Task ExecuteDelete(string resource, Guid id);
+        byte[] ExecuteDownload(string resource, Guid id);
     }
 }
