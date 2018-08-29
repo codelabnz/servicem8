@@ -26,5 +26,7 @@ namespace Servicem8.API.Models
         public DateTime? work_order_date { get; set; }
         public DateTime? completion_date { get; set; }
         public DateTime? unsuccessful_date { get; set; }
+        public Guid? queue_uuid { get; set; }
+        public DateTime? queue_expiry_date { get; set; }
     }
 }
