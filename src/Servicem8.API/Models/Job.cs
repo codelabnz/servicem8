@@ -28,5 +28,6 @@ namespace Servicem8.API.Models
         public DateTime? unsuccessful_date { get; set; }
         public Guid? queue_uuid { get; set; }
         public DateTime? queue_expiry_date { get; set; }
+        public String purchase_order_number { get; set; }
     }
 }

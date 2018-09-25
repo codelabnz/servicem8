@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageVersion>1.0.2.0</PackageVersion>
+    <PackageVersion>1.0.6.0</PackageVersion>
     <Authors>Tim Brown</Authors>
     <DevelopmentDependency>true</DevelopmentDependency>
     <Owners>Tim Brown</Owners>

@@ -51,7 +51,7 @@ namespace Servicem8.API.Tests
             var servicem8Client = new Servicem8Client(_apiUsername,
                                                     _apiPassword);
 
-            var jobId = Guid.Parse("f8843544-c058-42ff-af3f-09e3df9c1d3b");
+            var jobId = Guid.Parse("26f5a76c-cf9a-41ea-8f37-2d5a5adb156d");
             var attachments = await servicem8Client.Attachments.ByJobId(jobId);
 
             foreach (var attachment in attachments)
