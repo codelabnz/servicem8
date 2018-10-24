@@ -18,6 +18,8 @@ namespace Servicem8.API.Tests
             var jobs = await servicem8Client.Jobs.List();
 
             Assert.IsTrue(jobs.Count > 0);
+
+            var job = jobs.Find(s => s.generated_job_id == "38");
         }
 
         [TestMethod]

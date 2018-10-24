@@ -29,5 +29,7 @@ namespace Servicem8.API.Models
         public Guid? queue_uuid { get; set; }
         public DateTime? queue_expiry_date { get; set; }
         public String purchase_order_number { get; set; }
+        public DateTime? job_is_scheduled_until_stamp { get; set; }
+
     }
 }
