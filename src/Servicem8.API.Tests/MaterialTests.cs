@@ -21,6 +21,35 @@ namespace Servicem8.API.Tests
         }
 
         [TestMethod]
+        public void CanDeleteMaterial()
+        {
+            var servicem8Client = new Servicem8Client(_apiUsername,
+                                                     _apiPassword);
+
+
+            var materialId = Guid.Parse("1281E649-79FA-4EE6-A2B7-C8FA7FA87296");
+
+            var newMaterial = new Material()
+            {
+                uuid = materialId,
+                active = 1,
+                barcode = "1234",
+                cost = "100",
+                item_description = "Test1nov",
+                item_is_inventoried = 0,
+                item_number = "Test1nov",
+                name = "Test1nov",
+                price = "100",
+                quantity_in_stock = 100
+            };
+
+            var result = servicem8Client.Materials.Delete(newMaterial);
+            result.Wait();
+
+            Assert.IsNull(result.Exception);
+        }
+
+        [TestMethod]
         public async Task CanCreateNewMaterial()
         {
 

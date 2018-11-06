@@ -2,6 +2,7 @@
 using Servicem8.API.Models;
 using System.Threading.Tasks;
 using System;
+using System.Collections.Generic;
 
 namespace Servicem8.API.Tests
 {
@@ -19,7 +20,7 @@ namespace Servicem8.API.Tests
 
             Assert.IsTrue(jobs.Count > 0);
 
-            var job = jobs.Find(s => s.generated_job_id == "38");
+            var job = jobs.Find(s => s.generated_job_id == "51");
         }
 
         [TestMethod]
@@ -36,6 +37,21 @@ namespace Servicem8.API.Tests
             {
                 Assert.IsTrue(quote.status == "Quote");
             }
+        }
+
+        [TestMethod]
+        public async Task CanFetchByStatuses()
+        {
+
+            var servicem8Client = new Servicem8Client(_apiUsername,
+                                                     _apiPassword);
+
+            var statuses = new List<string>() { "Quote", "Work Order" };
+
+            var jobs = await servicem8Client.Jobs.Statuses(statuses);
+
+            Assert.IsTrue(jobs.Count > 0);
+           
         }
 
         [TestMethod]

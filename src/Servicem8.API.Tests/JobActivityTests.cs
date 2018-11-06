@@ -26,7 +26,7 @@ namespace Servicem8.API.Tests
             var servicem8Client = new Servicem8Client(_apiUsername,
                                                      _apiPassword);
 
-            var jobId = Guid.Parse("5a8ab941-8701-4341-8e77-c8df39ccf43e");
+            var jobId = Guid.Parse("53EB6C0D-12EB-4650-AC33-4183579AB260");
             var jobActivities = await servicem8Client.JobActivities.ByJobId(jobId);
 
             Assert.IsTrue(jobActivities.Count > 0);

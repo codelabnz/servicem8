@@ -12,6 +12,7 @@ namespace Servicem8.API.Resources
 
         private const string ListUrl = "/job.json";
         private const string QuoteUrl = "/job.json?%24filter=status%20eq%20'Quote'";
+        private const string StatusesUrl = "/job.json?%24filter=";
         private const string ByIdUrl = "/job.json?%24filter=uuid%20eq%20'{id}'";
         private const string CreateUrl = "/job.json";
         private const string UpdateUrl = "/job/{id}.json";
@@ -25,6 +26,14 @@ namespace Servicem8.API.Resources
         public Task<List<Job>> Quotes()
         {
             return Client.ExecuteList<Job>(QuoteUrl);
+        }
+
+        public Task<List<Job>> Statuses(List<string> statues)
+        {
+            var url = string.Empty;
+            statues.ForEach(status => status = string.Format("'{0}'", status));
+            url = string.Concat(StatusesUrl, "status%20eq%20", string.Join("status%20eq%20", statues));
+            return Client.ExecuteList<Job>(url);
         }
 
         public Task<Job> ById(Guid id)
