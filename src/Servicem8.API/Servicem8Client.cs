@@ -19,7 +19,8 @@ namespace Servicem8.API
         private readonly Lazy<JobQueueResource> _jobQueues;
         private readonly Lazy<JobContactResource> _jobContacts;
         private readonly Lazy<JobActivityResource> _jobActivities;
-        private readonly Lazy<JobAllocationResource> _jobAllocations;      
+        private readonly Lazy<JobAllocationResource> _jobAllocations;
+        private readonly Lazy<StaffResource> _staff;
 
         public Servicem8Client(string apiUsername, string apiPassword, string url = null)
         {
@@ -37,6 +38,12 @@ namespace Servicem8.API
             _jobContacts = new Lazy<JobContactResource>(() => new JobContactResource(_executionService), true);
             _jobActivities = new Lazy<JobActivityResource>(() => new JobActivityResource(_executionService), true);
             _jobAllocations = new Lazy<JobAllocationResource>(() => new JobAllocationResource(_executionService), true);
+            _staff = new Lazy<StaffResource>(() => new StaffResource(_executionService), true);
+        }
+
+        public StaffResource Staff
+        {
+            get { return _staff.Value; }
         }
 
         public CompanyResource Companies
